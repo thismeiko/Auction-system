@@ -9,8 +9,10 @@ else{
 
 async function main(){
     // 检查兼容性
+    Icon.style.display = "block";
     if(navigator.userAgent.indexOf("safari")!=-1&&navigator.userAgent.indexOf("Chrome")==-1){
         alert("No web3 provider detected, please install MetaMask Wallet");
+        Icon.style.display = "none";
         return;
     }
     console.log('compatible');
@@ -18,6 +20,7 @@ async function main(){
     //metaMask是否下载
     if(!window.ethereum){
         alert("No web3 provider detected.");
+        Icon.style.display = "none";
         return;
     }
     console.log("installed");
@@ -38,6 +41,7 @@ async function main(){
         const errorMessage="Cannot connect to wallet";
         console.log(errorMessage,error);
         alert(errorMessage);
+        Icon.style.display = "none";
         return;
     }
     console.log("Wallet Connected");
@@ -46,9 +50,30 @@ async function main(){
     const chainId = await provider.getNetwork();
     if(chainId.chainId!=5){
         alert("Please switch to the Goerli test network in metamask. The page will refresh.");
+        Icon.style.display = "none";
         return;
     }
     console.log("Connect to Goerli");
 
+    //更新状态
+    connectionStatus.textContent = "🟢 Connected";
+
+    //用户一旦连接，connect消失
+    connectButton.setAttribute("disable","true");
+
+    const signer = provider.getSigner();
+    const contractWithSigner = contract.connect(singer);
+    const contract = new ethers.Contract(contractAddress,contractABI,provider);
+    const connectedWalletAddress = await signer.getAddress;
+    connectedWallect.textContent = connectedWallectAddress;
+    console.log('connected wallet:${connectedWalletAddress}');
+
+    async function displayBalance(){
+    if(balance == 0){
+        goerliBalance.innerHTML +='(get free eth)';
+    }
+}
+displayBalance();
+Icon.style.display = "none";
 
 }
