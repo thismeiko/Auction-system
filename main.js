@@ -1,6 +1,6 @@
 //连接账户
 
-const CONNECT_AUTOMATICALLY = false;
+const CONNECT_AUTOMATICALLY = true;
 if(CONNECT_AUTOMATICALLY) {
   main();
 } else {
@@ -47,13 +47,13 @@ async function main() {
   console.log("Wallet connected");
 
 
-//   const chainId = await provider.getNetwork();
-//   if(chainId.chainId != 5) {
-//     alert("Please switch to the Goerli Test Network in MetaMask. The page will refresh automatically after switching.");
-//     loadingIconConnect.style.display = "none";
-//     return;
-//   }
-//   console.log("Connected to Goerli");
+  const chainId = await provider.getNetwork();
+  if(chainId.chainId != 5) {
+    alert("Please switch to the Goerli Test Network in MetaMask. The page will refresh automatically after switching.");
+    loadingIconConnect.style.display = "none";
+    return;
+  }
+  console.log("Connected to Goerli");
 
 
   connectionStatus.textContent = "🟢 Connected";
@@ -87,27 +87,27 @@ async function main() {
   //----------------------------------------------------//
 
 
-  displayCurrentNumberFromContract();
-  contract.on("NumIncreasedEvent", (message, newNumber) => {
-    console.log(message);
-    currentNumberDisplay.textContent = newNumber;
-    displayBalance();
-  });
-  increaseNumButton.onclick = increaseNumber;
+//   displayCurrentNumberFromContract();
+//   contract.on("NumIncreasedEvent", (message, newNumber) => {
+//     console.log(message);
+//     currentNumberDisplay.textContent = newNumber;
+//     displayBalance();
+//   });
+  submit.onclick = gRight;
 
-  async function increaseNumber() {
+  async function gRight() {
     console.log("Initiating transaction...");
-    loadingIconIncreaseNum.style.display = "block";
+    // loadingIconIncreaseNum.style.display = "block";
     try {
-      await contractWithSigner.increaseNum();
+      await contractWithSigner.gainRight();
     } catch(error) {
-      loadingIconIncreaseNum.style.display = "none";
+    //   loadingIconIncreaseNum.style.display = "none";
       console.error("User rejected the transaction");
       console.error(error);
     }
-    loadingIconIncreaseNum.style.display = "none";
+    // loadingIconIncreaseNum.style.display = "none";
   }
   async function displayCurrentNumberFromContract() {
-    currentNumberDisplay.textContent = await contract.getNum();
+    balance.textContent = await contract.getNum();
   }
 }
