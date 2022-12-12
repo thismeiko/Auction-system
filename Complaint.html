@@ -15,8 +15,10 @@
 
 <div class="connect">
     <p>1.Please click on the link below to connect your account.</p>
+    <p>Connection status:<span id="connectionStatus">🔴 Not connected</span></p>
     <button id="connectButton"><p>connect</p></button>
-    <span id="icon" class="icon"></span>
+    <span id="loadingIconConnect" class="icon"></span>
+    <p>Connected wallet: <span id="connectedWallet">[No wallet connected]</span></p>
 </div>
 
 
@@ -24,12 +26,13 @@
     <p>2.Please enter the code to obtain the right to participate.</p>
     <input type="text" name="code" id="code" placeholder="Ex:0000000">
     <input type="submit" value="Submit" id="submit">
+    <p>Balance: <span id="balance"></span></p>
 </div>
 
 <div>
     <p>3.get your lottery number and time.</p>
     <button><p>Lottery</p></button>
-    <p>比如:Number:7 <br> 2:00PM(Chicago time)</p>
+    <p>Number:<span id="number"></span> <br> <span id="time"></span></p>
 </div>
 
 <div>
