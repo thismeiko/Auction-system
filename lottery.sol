@@ -9,7 +9,7 @@ address public owner;
 
 //+1
 uint public num;
-
+uint public lotteryButton;
 constructor(){
     owner = msg.sender;
 }
@@ -34,4 +34,22 @@ function gainRight() public{
 function getNum() public view returns(uint){
     return num;
 }
+
+function loseRight() public{
+    num=0;
 }
+
+function setLottery(uint number) public{
+require(owner==msg.sender,"Must be owner of conract to set the number");
+ lotteryButton = uint(keccak256(abi.encodePacked(block.timestamp,block.difficulty,  
+        msg.sender))) % number;
+}
+
+function Lottery() public view returns(uint){
+        return lotteryButton;
+    }
+}
+
+
+
+

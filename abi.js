@@ -1,9 +1,29 @@
-var contractAddress ="0x8cFBFF6CB04e2E3e18d734a9F7a0626718ca0c22";
+var contractAddress ="0xcD6a42782d230D7c13A74ddec5dD140e55499Df9";
 
 var contractABI = [
 	{
 		"inputs": [],
 		"name": "gainRight",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "loseRight",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "number",
+				"type": "uint256"
+			}
+		],
+		"name": "setLottery",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -66,6 +86,32 @@ var contractABI = [
 				"internalType": "bool",
 				"name": "",
 				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "Lottery",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "lotteryButton",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
